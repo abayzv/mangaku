@@ -1,8 +1,10 @@
 <template>
   <div class="slider">
-    <Carousel :items-to-show="5.5" :wrap-around="true">
-      <Slide v-for="slide in 10" :key="slide">
-        <div class="carousel__item">{{ slide }}</div>
+    <Carousel :items-to-show="showItems" :wrap-around="true">
+      <Slide v-for="(item, index) in items" :key="index">
+        <div class="carousel__item">
+          <img :src="item.image" :alt="item.description" :title="item.title" />
+        </div>
       </Slide>
 
       <template #addons>
@@ -17,6 +19,12 @@ import { defineComponent } from "vue";
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Navigation } from "vue3-carousel";
 
+interface sliderItem {
+  title: string;
+  description: string;
+  image: string;
+}
+
 export default defineComponent({
   name: "SliderComponent",
   components: {
@@ -24,16 +32,28 @@ export default defineComponent({
     Slide,
     Navigation,
   },
+  props: {
+    showItems: {
+      type: Number,
+      default: 5,
+    },
+    items: {
+      type: Array as () => sliderItem[],
+      default: () => [],
+    },
+  },
 });
 </script>
 
 <style lang="scss">
 .slider {
   .carousel__item {
-    background-color: red;
-    width: 100%;
-    height: 400px;
-    border-radius: 1rem;
+    img {
+      width: 300px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
   }
 }
 
