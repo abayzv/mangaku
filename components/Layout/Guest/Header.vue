@@ -5,13 +5,7 @@
     >
       <div class="container text-white flex items-center justify-between">
         <!-- Logo -->
-        <div>
-          <img
-            src="https://seeklogo.com/images/M/manga-logo-26D5521A34-seeklogo.com.png"
-            alt="Mangaku Logo"
-            width="100"
-          />
-        </div>
+        <div>Logo</div>
         <!-- End Logo -->
 
         <!-- Menu -->
