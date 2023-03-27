@@ -1,10 +1,8 @@
 <template>
-  <div class="bg-red-600 text-white">
-    <LayoutHeader />
-    <LayoutSidebar />
-    <LayoutMain />
-    <LayoutFooter />
-  </div>
+  <LayoutHeader />
+  <LayoutSidebar />
+  <LayoutMain />
+  <LayoutFooter />
 </template>
 
 <script lang="ts">
