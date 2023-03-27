@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <LayoutHeader />
-    <LayoutMain />
+    <LayoutMain>
+      <slot />
+    </LayoutMain>
     <LayoutFooter />
   </div>
 </template>

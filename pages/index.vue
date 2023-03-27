@@ -1,5 +1,7 @@
 <template>
-  <Layout />
+  <Layout>
+    <Slider />
+  </Layout>
 </template>
 
 <script lang="ts">

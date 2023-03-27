@@ -1,6 +1,6 @@
 <template>
-  <div class="text-white">
-    <slot />
+  <div class="slider">
+    <!-- Slider -->
   </div>
 </template>
 
@@ -8,6 +8,8 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "LayoutContent",
+  name: "SliderComponent",
 });
 </script>
+
+<style lang="scss"></style>

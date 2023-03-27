@@ -1,7 +1,7 @@
 <template>
   <main>
     <div class="container my-5">
-      <LayoutContent />
+      <LayoutContent> <slot /> </LayoutContent>
     </div>
   </main>
 </template>
