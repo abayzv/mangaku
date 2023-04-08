@@ -7,4 +7,15 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  modules: ["@pinia/nuxt"],
+
+  nitro: {
+    devProxy: {
+      "/komik": {
+        target: "https://komikcast.net/",
+        changeOrigin: true,
+        prependPath: true,
+      },
+    },
+  },
 });
