@@ -1,14 +1,23 @@
-export default defineEventHandler(() => {
+import axios from "axios";
+import * as cheerio from "cheerio";
+
+export default defineEventHandler(async () => {
+  let titleData = "";
+
   const fetchData = async () => {
-    const response = await fetch("http://localhost:3000/komik");
+    const response = await axios.get("http://localhost:3000/komik");
     return response;
   };
 
-  fetchData().then((response) => {
-    console.log(response);
+  await fetchData().then((response) => {
+    const $ = cheerio.load(response.data);
+    const title = $("title").text();
+
+    titleData = title;
   });
 
   return {
     statusCode: 200,
+    body: titleData,
   };
 });
