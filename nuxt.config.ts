@@ -10,12 +10,8 @@ export default defineNuxtConfig({
   modules: ["@pinia/nuxt"],
 
   nitro: {
-    devProxy: {
-      "/komik": {
-        target: "https://komikcast.net/",
-        changeOrigin: true,
-        prependPath: true,
-      },
+    routeRules: {
+      "/komik": { proxy: "https://komikcast.net/" },
     },
   },
 });
