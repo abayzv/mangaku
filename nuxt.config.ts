@@ -11,7 +11,17 @@ export default defineNuxtConfig({
 
   nitro: {
     routeRules: {
-      "/komik": { proxy: "https://komikcast.net/" },
+      "/komik": {
+        proxy: "https://komikcast.net/",
+        cache: {
+          maxAge: 60 * 60 * 24 * 7,
+        },
+        cors: true,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET",
+        },
+      },
     },
   },
 });
