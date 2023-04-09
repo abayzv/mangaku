@@ -13,7 +13,9 @@ export default {
   },
   setup() {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:3000/api/hello");
+      const response = await axios.get(
+        "https://iridescent-beignet-e93812.netlify.app/komik"
+      );
       console.log(response);
     };
 
