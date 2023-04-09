@@ -3,6 +3,7 @@
 </template>
 
 <script lang="ts">
+import axios from "axios";
 import Layout from "@/components/Layout/Guest/index.vue";
 
 export default {
@@ -12,7 +13,7 @@ export default {
   },
   setup() {
     const fetchData = async () => {
-      const response = await fetch("/komik");
+      const response = await axios.get("http://localhost:3000/api/hello");
       console.log(response);
     };
 
