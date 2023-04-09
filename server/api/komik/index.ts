@@ -11,9 +11,12 @@ export default defineEventHandler(async (event) => {
   const query = getQuery(event);
 
   const fetchData = async () => {
-    const response = await axios.get(`http://localhost:3000/komik`, {
-      params: query,
-    });
+    const response = await axios.get(
+      `https://iridescent-beignet-e93812.netlify.app/komik`,
+      {
+        params: query,
+      }
+    );
     return response;
   };
 

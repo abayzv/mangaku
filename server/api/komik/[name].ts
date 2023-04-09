@@ -6,20 +6,14 @@ interface Data {
 }
 
 export default defineEventHandler(async (event) => {
-  let baseUrl = "";
-
-  if (process.env.NODE_ENV === "development") {
-    baseUrl = "http://localhost:3000";
-  } else {
-    baseUrl = "https://iridescent-beignet-e93812.netlify.app";
-  }
-
   let titleData = "";
   const data: Data = {};
   const params = event.context.params;
 
   const fetchData = async () => {
-    const response = await axios.get(`${baseUrl}/komik/komik/${params?.name}`);
+    const response = await axios.get(
+      `https://iridescent-beignet-e93812.netlify.app/komik/komik/${params?.name}`
+    );
     return response;
   };
 
