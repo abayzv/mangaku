@@ -1,8 +1,6 @@
 <template>
   <nav>
-    <section
-      class="bg-black bg-opacity-90 flex flex-col items-center justify-center p-3"
-    >
+    <section class="bg-white flex flex-col items-center justify-center p-3">
       <div class="container text-white flex items-center justify-between">
         <!-- Logo -->
         <div class="flex items-center gap-3">
@@ -21,17 +19,17 @@
         <div>
           <ul class="flex gap-3 items-center">
             <li
-              class="text-white p-2 rounded"
+              class="text-[#363636] p-2 rounded"
               :class="{
-                'bg-sky-500': $route.name !== 'english',
+                active: $route.name !== 'english',
               }"
             >
               <NuxtLink to="/">Indonesia</NuxtLink>
             </li>
             <li
-              class="text-white p-2 rounded"
+              class="text-[#363636] p-2 rounded"
               :class="{
-                'bg-sky-500': $route.name === 'english',
+                active: $route.name === 'english',
               }"
             >
               <NuxtLink to="/english">English</NuxtLink>
@@ -64,3 +62,9 @@ export default defineComponent({
   name: "LayoutHeader",
 });
 </script>
+
+<style lang="scss">
+.active {
+  @apply bg-sky-500 text-white;
+}
+</style>

@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <div class="px-5">
-      <div class="w-full mt-5 relative bg-blue-100 h-32 rounded-lg">
+      <div class="w-full mt-5 relative bg-sky-100 h-32 rounded-lg">
         <img
           src="https://media3.giphy.com/media/CTaMxpaVnlwhBkHQ9c/giphy.gif?cid=6c09b9527b5u5zbzxcgjybjypk2d01u8u8f7czby2izo7mfn&rid=giphy.gif&ct=s"
           class="absolute -bottom-4 w-32"
@@ -9,23 +9,14 @@
             left: `${(correctWords.length + 1) * 1}%`,
           }"
         />
-      </div>
-      <div class="my-10 p-7 bg-slate-800 rounded-lg">
-        <div class="flex flex-wrap gap-2">
-          <!-- <textarea
-          v-model="randomWords"
-          class="text-gray-500 w-full p-5 text-xl font-bold [word-spacing: -1rem;] bg-[#363636] border-4 outline-none border-yellow-500 rounded-lg mt-10 min-h-[250px]"
-          style="word-spacing: 1rem"
-          spellcheck="false"
+        <img
+          src="https://png.pngtree.com/png-vector/20220718/ourmid/pngtree-finish-line-banner-vector-ar-png-image_6006068.png"
+          class="absolute -bottom-4 right-10 w-32"
+          alt=""
         />
-        <div class="absolute top-0 left-0 w-full p-5">
-          <textarea
-            v-model="inputWords"
-            class="text-white text-xl font-bold [word-spacing: -1rem;] bg-[#363636] border-4 outline-none border-yellow-500 rounded-lg mt-10"
-            style="word-spacing: 1rem"
-            spellcheck="false"
-          />
-        </div> -->
+      </div>
+      <div class="my-10 p-7 bg-sky-100 rounded-lg">
+        <div class="flex flex-wrap gap-2">
           <div
             v-for="(item, index) in random"
             :key="index"
@@ -43,7 +34,7 @@
           <input
             v-model="inputWords"
             type="text"
-            class="p-3 w-full text-black rounded"
+            class="p-3 w-full text-black rounded disabled:bg-slate-300"
             :disabled="!isStartTimer"
             @keyup="typeAction"
           />
@@ -63,7 +54,7 @@
       </div>
       <div v-if="data.length > 0" class="my-5">
         <table class="w-full table-auto">
-          <thead class="bg-yellow-500">
+          <thead class="bg-sky-500 text-white">
             <tr>
               <th class="p-2">#</th>
               <th class="p-2">Correct Words</th>
@@ -76,7 +67,7 @@
             <tr
               v-for="(item, index) in data"
               :key="index"
-              class="bg-gray-600 text-center"
+              class="bg-sky-100 text-center"
             >
               <td class="p-2">{{ index + 1 }}</td>
               <td class="p-2">{{ item.correctWords }}</td>

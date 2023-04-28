@@ -20,6 +20,6 @@ export default defineComponent({
 
 <style lang="scss">
 main {
-  @apply bg-black bg-opacity-95 text-white flex justify-center;
+  @apply bg-slate-100 flex justify-center;
 }
 </style>
