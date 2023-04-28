@@ -9,7 +9,7 @@
             alt="Runtypes Logo"
             width="50px"
           />
-          <span class="text-2xl"
+          <span class="text-2xl text-black"
             ><span class="text-sky-500 font-bold">Run</span>types</span
           >
         </div>
