@@ -262,6 +262,8 @@ export default defineComponent({
         timer.value = 60;
         indexWords.value = 0;
         isShowPopup.value = true;
+        correctWords.value = [];
+        wrongWords.value = [];
 
         randomize();
       }, 60000);
