@@ -1,7 +1,7 @@
 <template>
   <footer class="bg-black bg-opacity-90 text-white flex justify-center p-6">
     <div class="container flex justify-center w-full">
-      <div>Copyright ©Mangaku 2023</div>
+      <div>Copyright ©Mahesadev 2023</div>
     </div>
   </footer>
 </template>

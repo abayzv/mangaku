@@ -13,6 +13,27 @@ export const useCounterStore = defineStore("counter", {
   },
 });
 
+export const useWordStore = defineStore("word", {
+  state: () => ({
+    words: [],
+  }),
+  actions: {
+    async fetchWords() {
+      const data = await axios.get("/api/words/id");
+      this.words = data.data.data.data;
+    },
+    getRandomWords(count: number) {
+      const words: Array<string> = [];
+      for (let i = 0; i < count; i++) {
+        const randomWord =
+          this.words[Math.floor(Math.random() * this.words.length)];
+        words.push(randomWord);
+      }
+      return words;
+    },
+  },
+});
+
 export const useUserStore = defineStore("user", {
   state: () => ({
     user: {},

@@ -5,25 +5,41 @@
     >
       <div class="container text-white flex items-center justify-between">
         <!-- Logo -->
-        <div>Logo</div>
+        <div class="flex items-center gap-3">
+          <img
+            src="https://seeklogo.com/images/G/google-cloud-run-logo-895F1305FF-seeklogo.com.png"
+            alt="Runtypes Logo"
+            width="50px"
+          />
+          <span class="text-2xl"
+            ><span class="text-sky-500 font-bold">Run</span>types</span
+          >
+        </div>
         <!-- End Logo -->
 
         <!-- Menu -->
-        <div>Menu</div>
+        <div>
+          <ul class="flex gap-3 items-center">
+            <li class="bg-sky-500 text-white p-2 rounded">Indonesia</li>
+            <li class="">English</li>
+          </ul>
+        </div>
         <!-- End Menu -->
 
         <!-- Search -->
-        <div>Search</div>
+        <!-- <div>Search</div> -->
         <!-- End Search -->
       </div>
     </section>
-    <section
+    <!-- Navigation Section -->
+    <!-- <section
       class="bg-black bg-opacity-80 flex flex-col items-center justify-center p-3"
     >
       <div class="container text-white flex items-center justify-center">
         <div>Navigation</div>
       </div>
-    </section>
+    </section> -->
+    <!-- End Navigation Section -->
   </nav>
 </template>
 
