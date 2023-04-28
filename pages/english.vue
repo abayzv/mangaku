@@ -307,5 +307,10 @@ export default defineComponent({
       score,
     };
   },
+  head() {
+    return {
+      title: "Runtypes - Typing Test",
+    };
+  },
 });
 </script>
