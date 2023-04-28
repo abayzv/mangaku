@@ -145,6 +145,14 @@ export default defineComponent({
     Layout,
   },
   setup() {
+    // Seo Meta
+    useSeoMeta({
+      title: "English | Runetypes - Typing Speed Test",
+      description:
+        "Runetypes is a typing speed test website, you can test your typing speed here.",
+    });
+    // End Seo Meta
+
     const wordStore = useWordStore();
     const { words } = storeToRefs(wordStore);
     const random = ref<string[]>([]);
@@ -307,11 +315,6 @@ export default defineComponent({
       isShowPopup,
       score,
       countWords,
-    };
-  },
-  head() {
-    return {
-      title: "Runtypes - Typing Test",
     };
   },
 });
