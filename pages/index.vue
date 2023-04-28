@@ -156,6 +156,7 @@ export default defineComponent({
     const isStartTimer = ref<boolean>(false);
     const data = ref<Data>([]);
     const isShowPopup = ref<boolean>(false);
+    const countWords = ref<number>(0);
 
     // set timer to 60 seconds
     const timer = ref<number>(60);
@@ -211,6 +212,7 @@ export default defineComponent({
         if (inputWords.value === random.value[indexWords.value]) {
           correctWords.value.push(indexWords.value);
           inputWords.value = "";
+          countWords.value += random.value[indexWords.value].length;
         }
         // if empty input words no action
         else if (inputWords.value === "") {
@@ -218,6 +220,7 @@ export default defineComponent({
         } else {
           wrongWords.value.push(indexWords.value);
           inputWords.value = "";
+          countWords.value += random.value[indexWords.value].length;
         }
 
         indexWords.value++;
@@ -237,9 +240,7 @@ export default defineComponent({
 
       setTimeout(() => {
         // count wpm with formula
-        const wpm = Math.floor(
-          (correctWords.value.length + wrongWords.value.length) * 1
-        );
+        const wpm = Math.floor(countWords.value / 5) * 1;
 
         const netWpm = Math.floor(
           (correctWords.value.length - wrongWords.value.length) / 1
@@ -305,6 +306,7 @@ export default defineComponent({
       data,
       isShowPopup,
       score,
+      countWords,
     };
   },
   head() {
