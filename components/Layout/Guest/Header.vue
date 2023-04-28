@@ -20,8 +20,22 @@
         <!-- Menu -->
         <div>
           <ul class="flex gap-3 items-center">
-            <li class="bg-sky-500 text-white p-2 rounded">Indonesia</li>
-            <li class="">English</li>
+            <li
+              class="text-white p-2 rounded"
+              :class="{
+                'bg-sky-500': $route.name !== 'english',
+              }"
+            >
+              <NuxtLink to="/">Indonesia</NuxtLink>
+            </li>
+            <li
+              class="text-white p-2 rounded"
+              :class="{
+                'bg-sky-500': $route.name === 'english',
+              }"
+            >
+              <NuxtLink to="/english">English</NuxtLink>
+            </li>
           </ul>
         </div>
         <!-- End Menu -->

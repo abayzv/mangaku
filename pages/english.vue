@@ -13,19 +13,19 @@
       <div class="my-10 p-7 bg-slate-800 rounded-lg">
         <div class="flex flex-wrap gap-2">
           <!-- <textarea
-        v-model="randomWords"
-        class="text-gray-500 w-full p-5 text-xl font-bold [word-spacing: -1rem;] bg-[#363636] border-4 outline-none border-yellow-500 rounded-lg mt-10 min-h-[250px]"
-        style="word-spacing: 1rem"
-        spellcheck="false"
-      />
-      <div class="absolute top-0 left-0 w-full p-5">
-        <textarea
-          v-model="inputWords"
-          class="text-white text-xl font-bold [word-spacing: -1rem;] bg-[#363636] border-4 outline-none border-yellow-500 rounded-lg mt-10"
+          v-model="randomWords"
+          class="text-gray-500 w-full p-5 text-xl font-bold [word-spacing: -1rem;] bg-[#363636] border-4 outline-none border-yellow-500 rounded-lg mt-10 min-h-[250px]"
           style="word-spacing: 1rem"
           spellcheck="false"
         />
-      </div> -->
+        <div class="absolute top-0 left-0 w-full p-5">
+          <textarea
+            v-model="inputWords"
+            class="text-white text-xl font-bold [word-spacing: -1rem;] bg-[#363636] border-4 outline-none border-yellow-500 rounded-lg mt-10"
+            style="word-spacing: 1rem"
+            spellcheck="false"
+          />
+        </div> -->
           <div
             v-for="(item, index) in random"
             :key="index"
@@ -182,7 +182,7 @@ export default defineComponent({
     });
 
     onMounted(async () => {
-      await wordStore.fetchWords("id");
+      await wordStore.fetchWords("en");
       random.value = wordStore.getRandomWords(100);
 
       // convert array to string and replace comma with space

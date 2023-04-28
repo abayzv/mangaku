@@ -18,8 +18,8 @@ export const useWordStore = defineStore("word", {
     words: [],
   }),
   actions: {
-    async fetchWords() {
-      const data = await axios.get("/api/words/id");
+    async fetchWords(code: string) {
+      const data = await axios.get(`/api/words/${code}`);
       this.words = data.data.data.data;
     },
     getRandomWords(count: number) {
