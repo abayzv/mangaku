@@ -260,7 +260,10 @@ export default defineComponent({
         clearInterval(interval);
         isStartTimer.value = false;
         timer.value = 60;
+        indexWords.value = 0;
         isShowPopup.value = true;
+
+        randomize();
       }, 60000);
     };
 
