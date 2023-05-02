@@ -1,7 +1,10 @@
 <template>
   <Layout>
     <div class="px-5">
-      <div class="w-full mt-5 relative bg-sky-100 h-32 rounded-lg">
+      <div
+        v-if="!isMobile()"
+        class="w-full mt-5 relative bg-sky-100 h-32 rounded-lg"
+      >
         <img
           src="https://media3.giphy.com/media/CTaMxpaVnlwhBkHQ9c/giphy.gif?cid=6c09b9527b5u5zbzxcgjybjypk2d01u8u8f7czby2izo7mfn&rid=giphy.gif&ct=s"
           class="absolute -bottom-4 w-32"
@@ -15,7 +18,7 @@
           alt=""
         />
       </div>
-      <div class="my-10 p-7 bg-sky-100 rounded-lg">
+      <div v-if="!isMobile()" class="my-10 p-7 bg-sky-100 rounded-lg">
         <div class="flex flex-wrap gap-2">
           <div
             v-for="(item, index) in random"
@@ -50,6 +53,25 @@
         <div class="w-full text-center opacity-40 mt-5">
           Press Space 2x To Start
         </div>
+      </div>
+      <div v-else class="my-10 p-7 bg-red-200 rounded-lg text-center">
+        <div class="w-full flex justify-center mb-2 fill-red-500">
+          <svg
+            width="52"
+            height="52"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20.5 23.3L0.700012 3.5L2.10001 2.1L21.9 21.9L20.5 23.3ZM5.00001 6.425L7.00001 8.425V18H16.6L19 20.4V21C19 21.55 18.804 22.021 18.412 22.413C18.02 22.805 17.5493 23.0007 17 23H7.00001C6.45001 23 5.97901 22.804 5.58701 22.412C5.19501 22.02 4.99935 21.5493 5.00001 21V6.425ZM19 3V16.15L17 14.15V6H8.82501L5.15001 2.3C5.31668 1.91667 5.56268 1.60433 5.88801 1.363C6.21335 1.12167 6.58401 1.00067 7.00001 1H17C17.55 1 18.021 1.196 18.413 1.588C18.805 1.98 19.0007 2.45067 19 3Z"
+            />
+          </svg>
+        </div>
+
+        <span class="text-xl text-red-500 font-bold block mb-2"
+          >Mobile is not supported</span
+        >
+        <div class="opacity-75">Please open with Tablet or Desktop</div>
       </div>
       <div v-if="data.length > 0" class="my-5">
         <table class="w-full table-auto">
@@ -167,6 +189,13 @@ export default defineComponent({
 
     // set timer to 60 seconds
     const timer = ref<number>(60);
+
+    // check if device is mobile
+    const isMobile = () => {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
+    };
 
     onMounted(async () => {
       await wordStore.fetchWords("id");
@@ -325,6 +354,7 @@ export default defineComponent({
       score,
       countWords,
       computedAction,
+      isMobile,
     };
   },
   head() {

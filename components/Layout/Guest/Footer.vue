@@ -1,7 +1,9 @@
 <template>
   <footer class="bg-white flex justify-center p-6">
     <div class="container flex justify-center w-full">
-      <div>Copyright ©Mahesadev 2023</div>
+      <div class="text-[#808080]">
+        Copyright <span class="font-bold">©Mahesadev</span> 2023
+      </div>
     </div>
   </footer>
 </template>
