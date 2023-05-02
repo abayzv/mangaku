@@ -32,11 +32,10 @@
         </div>
         <div class="flex items-center mt-10 gap-3">
           <input
-            v-model="inputWords"
+            v-model="computedAction"
             type="text"
             class="p-3 w-full text-black rounded disabled:bg-slate-300"
             :disabled="!isStartTimer"
-            @keyup="typeAction"
           />
           <div class="p-3 bg-red-500 text-white rounded text-lg font-bold">
             {{ computedTimer }}
@@ -210,30 +209,31 @@ export default defineComponent({
       return count;
     });
 
-    // type action
-    const typeAction = (e: KeyboardEvent): void => {
-      if (e.key === " ") {
-        // remove space from input words
-        inputWords.value = inputWords.value.trim();
+    const computedAction = computed({
+      get() {
+        return inputWords.value;
+      },
+      set(value) {
+        inputWords.value = value;
 
-        // check if input words is correct with random index words
-        if (inputWords.value === random.value[indexWords.value]) {
-          correctWords.value.push(indexWords.value);
-          inputWords.value = "";
-          countWords.value += random.value[indexWords.value].length;
-        }
-        // if empty input words no action
-        else if (inputWords.value === "") {
-          return;
-        } else {
-          wrongWords.value.push(indexWords.value);
-          inputWords.value = "";
-          countWords.value += random.value[indexWords.value].length;
-        }
+        // if value containt space console log
+        if (value.includes(" ")) {
+          const newInput = value.trim();
 
-        indexWords.value++;
-      }
-    };
+          if (newInput === random.value[indexWords.value]) {
+            correctWords.value.push(indexWords.value);
+            inputWords.value = "";
+            countWords.value += random.value[indexWords.value].length;
+            indexWords.value++;
+          } else {
+            wrongWords.value.push(indexWords.value);
+            inputWords.value = "";
+            countWords.value += random.value[indexWords.value].length;
+            indexWords.value++;
+          }
+        }
+      },
+    });
 
     const startTimer = () => {
       // if timer is start then return
@@ -308,13 +308,13 @@ export default defineComponent({
       computedTimer,
       timer,
       isStartTimer,
-      typeAction,
       startTimer,
       randomize,
       data,
       isShowPopup,
       score,
       countWords,
+      computedAction,
     };
   },
   head() {
