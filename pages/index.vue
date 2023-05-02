@@ -168,18 +168,6 @@ export default defineComponent({
     // set timer to 60 seconds
     const timer = ref<number>(60);
 
-    // computed timer to 00:00
-    const computedTimer = computed(() => {
-      const minutes = Math.floor(timer.value / 60);
-      const seconds = timer.value % 60;
-
-      // add padding 0 if minutes or seconds less than 10
-      const minutesString = minutes < 10 ? `0${minutes}` : `${minutes}`;
-      const secondsString = seconds < 10 ? `0${seconds}` : `${seconds}`;
-
-      return `${minutesString}:${secondsString}`;
-    });
-
     onMounted(async () => {
       await wordStore.fetchWords("id");
       random.value = wordStore.getRandomWords(100);
@@ -193,47 +181,6 @@ export default defineComponent({
     const randomize = () => {
       random.value = wordStore.getRandomWords(100);
     };
-
-    // count correct words from input words and random words
-    const correctCount = computed(() => {
-      const inputWordsArray = inputWords.value.split(" ");
-      const randomWordsArray = randomWords.value.split(" ");
-      let count = 0;
-
-      for (let i = 0; i < inputWordsArray.length; i++) {
-        if (inputWordsArray[i] === randomWordsArray[i]) {
-          count++;
-        }
-      }
-
-      return count;
-    });
-
-    const computedAction = computed({
-      get() {
-        return inputWords.value;
-      },
-      set(value) {
-        inputWords.value = value;
-
-        // if value containt space console log
-        if (value.includes(" ")) {
-          const newInput = value.trim();
-
-          if (newInput === random.value[indexWords.value]) {
-            correctWords.value.push(indexWords.value);
-            inputWords.value = "";
-            countWords.value += random.value[indexWords.value].length;
-            indexWords.value++;
-          } else {
-            wrongWords.value.push(indexWords.value);
-            inputWords.value = "";
-            countWords.value += random.value[indexWords.value].length;
-            indexWords.value++;
-          }
-        }
-      },
-    });
 
     const startTimer = () => {
       // if timer is start then return
@@ -290,9 +237,72 @@ export default defineComponent({
       }
     };
 
+    // computed timer to 00:00
+    const computedTimer = computed(() => {
+      const minutes = Math.floor(timer.value / 60);
+      const seconds = timer.value % 60;
+
+      // add padding 0 if minutes or seconds less than 10
+      const minutesString = minutes < 10 ? `0${minutes}` : `${minutes}`;
+      const secondsString = seconds < 10 ? `0${seconds}` : `${seconds}`;
+
+      return `${minutesString}:${secondsString}`;
+    });
+
+    // count correct words from input words and random words
+    const correctCount = computed(() => {
+      const inputWordsArray = inputWords.value.split(" ");
+      const randomWordsArray = randomWords.value.split(" ");
+      let count = 0;
+
+      for (let i = 0; i < inputWordsArray.length; i++) {
+        if (inputWordsArray[i] === randomWordsArray[i]) {
+          count++;
+        }
+      }
+
+      return count;
+    });
+
+    // computed action
+    const computedAction = computed({
+      get() {
+        return inputWords.value;
+      },
+      set(value) {
+        inputWords.value = value;
+
+        // if value containt space
+        if (value.includes(" ")) {
+          const newInput = value.trim();
+
+          if (newInput === random.value[indexWords.value]) {
+            // push correct words to array
+            correctWords.value.push(indexWords.value);
+            // set input words to empty
+            inputWords.value = "";
+            // count all words
+            countWords.value += random.value[indexWords.value].length;
+
+            // set index words to next words
+            indexWords.value++;
+          } else {
+            // push wrong words to array
+            wrongWords.value.push(indexWords.value);
+            // set input words to empty
+            inputWords.value = "";
+            // count all words
+            countWords.value += random.value[indexWords.value].length;
+
+            // set index words to next words
+            indexWords.value++;
+          }
+        }
+      },
+    });
+
     const score = computed(() => {
       const correctWords = data.value[data.value.length - 1]?.correctWords;
-
       return (correctWords * 4000) / 100;
     });
 
