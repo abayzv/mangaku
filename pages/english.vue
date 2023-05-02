@@ -175,7 +175,7 @@ export default defineComponent({
         "Runetypes is a typing speed test website, you can test your typing speed here.",
       ogDescription:
         "Runetypes is a typing speed test website, you can test your typing speed here.",
-      ogImage: "/assets/images/runtypes.jpg",
+      ogImage: "https://mahesadev.com/runtypes.jpg",
       twitterCard: "summary_large_image",
     });
     // End Seo Meta
