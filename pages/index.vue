@@ -1,6 +1,7 @@
 <template>
   <Layout>
-    <div class="px-5">
+    <div v-if="userAgent === ''"></div>
+    <div v-else class="px-5">
       <div
         v-if="!isMobile()"
         class="w-full mt-5 relative bg-sky-100 h-32 rounded-lg"
@@ -191,6 +192,7 @@ export default defineComponent({
     const data = ref<Data>([]);
     const isShowPopup = ref<boolean>(false);
     const countWords = ref<number>(0);
+    const userAgent = ref<string>("");
 
     // set timer to 60 seconds
     const timer = ref<number>(60);
@@ -198,11 +200,12 @@ export default defineComponent({
     // check if device is mobile
     const isMobile = () => {
       return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
+        userAgent.value
       );
     };
 
     onMounted(async () => {
+      userAgent.value = navigator.userAgent;
       await wordStore.fetchWords("id");
       random.value = wordStore.getRandomWords(100);
 
@@ -360,6 +363,7 @@ export default defineComponent({
       countWords,
       computedAction,
       isMobile,
+      userAgent,
     };
   },
   head() {
