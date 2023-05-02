@@ -146,7 +146,7 @@ export default defineComponent({
   setup() {
     // Seo Meta
     useSeoMeta({
-      title: "Indonesia | Runetypes - Typing Speed Test",
+      title: "English | Runetypes - Typing Speed Test",
       description:
         "Runetypes is a typing speed test website, you can test your typing speed here.",
     });
