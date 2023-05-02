@@ -169,8 +169,13 @@ export default defineComponent({
     // Seo Meta
     useSeoMeta({
       title: "Indonesia | Runetypes - Typing Speed Test",
+      ogTitle: "Indonesia | Runetypes - Typing Speed Test",
       description:
         "Runetypes is a typing speed test website, you can test your typing speed here.",
+      ogDescription:
+        "Runetypes is a typing speed test website, you can test your typing speed here.",
+      ogImage: "/assets/images/runtypes.jpg",
+      twitterCard: "summary_large_image",
     });
     // End Seo Meta
 
